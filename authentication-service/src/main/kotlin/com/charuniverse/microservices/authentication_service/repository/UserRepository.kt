@@ -1,6 +1,6 @@
-package com.charuniverse.microservices.authentication_server.repository
+package com.charuniverse.microservices.authentication_service.repository
 
-import com.charuniverse.microservices.authentication_server.entity.User
+import com.charuniverse.microservices.authentication_service.entity.User
 import org.springframework.data.repository.CrudRepository
 
 interface UserRepository : CrudRepository<User, String> {

@@ -1,10 +1,10 @@
-package com.charuniverse.microservices.authentication_server.controller
+package com.charuniverse.microservices.authentication_service.controller
 
-import com.charuniverse.microservices.authentication_server.entity.User
-import com.charuniverse.microservices.authentication_server.model.LoginRequest
-import com.charuniverse.microservices.authentication_server.model.LoginResponse
-import com.charuniverse.microservices.authentication_server.model.RegisterRequest
-import com.charuniverse.microservices.authentication_server.repository.UserRepository
+import com.charuniverse.microservices.authentication_service.entity.User
+import com.charuniverse.microservices.authentication_service.model.LoginRequest
+import com.charuniverse.microservices.authentication_service.model.LoginResponse
+import com.charuniverse.microservices.authentication_service.model.RegisterRequest
+import com.charuniverse.microservices.authentication_service.repository.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*

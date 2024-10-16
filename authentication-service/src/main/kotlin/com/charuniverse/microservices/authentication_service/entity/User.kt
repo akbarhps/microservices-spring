@@ -1,4 +1,4 @@
-package com.charuniverse.microservices.authentication_server.entity
+package com.charuniverse.microservices.authentication_service.entity
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue

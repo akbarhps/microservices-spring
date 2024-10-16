@@ -1,4 +1,4 @@
-package com.charuniverse.microservices.authentication_server
+package com.charuniverse.microservices.authentication_service
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

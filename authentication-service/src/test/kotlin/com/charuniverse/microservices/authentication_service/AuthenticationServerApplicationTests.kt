@@ -1,4 +1,4 @@
-package com.charuniverse.microservices.authentication_server
+package com.charuniverse.microservices.authentication_service
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
