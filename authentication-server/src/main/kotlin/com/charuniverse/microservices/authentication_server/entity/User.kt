@@ -8,9 +8,9 @@ import jakarta.persistence.Id
 @Entity
 data class User(
     @Id @GeneratedValue(strategy = GenerationType.UUID)
-    private val id: String,
+    val id: String = "",
 
-    private val username: String,
+    val username: String,
 
-    private val email: String,
+    val password: String,
 )
