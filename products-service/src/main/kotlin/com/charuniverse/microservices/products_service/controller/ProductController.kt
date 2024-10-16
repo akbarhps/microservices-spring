@@ -8,14 +8,19 @@ import com.charuniverse.microservices.products_service.service.AuthenticationSer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/products")
 class ProductController(
-    @Autowired val authenticationService: AuthenticationService,
-    @Autowired val productRepository: ProductRepository
+    @Autowired
+    @Qualifier("com.charuniverse.microservices.products_service.service.AuthenticationService")
+    val authenticationService: AuthenticationService,
+
+    @Autowired
+    val productRepository: ProductRepository
 ) {
     private val LOGGER: Logger = LoggerFactory.getLogger(ProductController::class.java)
 
@@ -23,15 +28,11 @@ class ProductController(
     fun getProducts(@RequestHeader token: String): ResponseEntity<List<Product>> {
         val response = authenticationService.getUserInfo(token)
         if (!response.hasBody()) {
-            return ResponseEntity.notFound().build()
+            return ResponseEntity.status(response.statusCode).build()
         }
 
-        val user = response.body
-        return if (user != null) {
-            ResponseEntity.ok(productRepository.getProductsByUserId(user.id))
-        } else {
-            ResponseEntity.badRequest().build()
-        }
+        val user = response.body!!
+        return ResponseEntity.ok(productRepository.getProductsByUserId(user.id))
     }
 
     @PostMapping("/")
@@ -41,7 +42,7 @@ class ProductController(
     ): ResponseEntity<AddProductResponse> {
         val response = authenticationService.getUserInfo(token)
         if (!response.hasBody()) {
-            return ResponseEntity.notFound().build()
+            return ResponseEntity.status(response.statusCode).build()
         }
 
         LOGGER.info("User: ${response.body} added product: $request")
